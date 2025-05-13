@@ -1,0 +1,22 @@
+@layer components {
+  .btn-tw {
+    @apply inline-block py-3 px-6 rounded font-medium text-center cursor-pointer transition-all duration-300 border-none mr-3 mb-3;
+  }
+  
+  .btn-primary-tw {
+    @apply bg-primary text-white hover:bg-[#ba141a];
+  }
+  
+  .btn-secondary-tw {
+    @apply bg-transparent text-white border-2 border-white hover:bg-white hover:text-primary;
+  }
+  
+  .section-title-tw {
+    @apply text-center mb-10 text-primary text-3xl font-bold relative pb-4;
+  }
+  
+  .section-title-tw::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-[3px] bg-secondary;
+  }
+}

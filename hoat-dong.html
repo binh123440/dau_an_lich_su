@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt Động Kỷ Niệm Trọng Điểm | Dấu Ấn Lịch Sử</title>
+    <meta name="description" content="Theo dõi các hoạt động và sự kiện kỷ niệm 50 năm thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#d91f26',
+              secondary: '#ffce00',
+              dark: '#333',
+              // Timeline specific colors from original hoat-dong.html
+              "timeline-bg": "#4A0509", 
+              "timeline-text": "#E6A456", 
+              "timeline-date": "#FDE047", 
+              light: '#f4f4f4', // Kept from original if used
+            },
+            fontFamily: {
+              sans: ['Quicksand', 'Roboto', 'system-ui', 'sans-serif'],
+            },
+            scale: {
+              '102': '1.02',
+            },
+            transitionProperty: {
+              'height': 'height',
+              'spacing': 'margin, padding',
+            }
+          }
+        }
+      }
+    </script>
+    <link href="css/tailwind-components.css" rel="stylesheet">
+    <!-- Custom Styles for Parallax & Timeline -->
+    <style>
+        html { scroll-behavior: smooth; }
+        .parallax-wrapper { height: 100vh; overflow-x: hidden; overflow-y: auto; perspective: 3px; will-change: scroll-position; -webkit-overflow-scrolling: touch; transform-style: preserve-3d; scroll-behavior: smooth; }
+        .parallax-section { position: relative; display: flex; justify-content: center; align-items: center; min-height: 50vh; width: 100%; transform-style: preserve-3d; z-index: 1; backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; height: auto; }
+        .parallax-section.h-screen { min-height: 100vh; }
+        .content-section { background-color: var(--bg-color, white); position: relative; z-index: 2; isolation: isolate; }
+        .fade-in-element { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
+        .fade-in-element.visible { opacity: 1; transform: translateY(0); }
+        video.parallax-bg { transform: none !important; width: 100%; height: 100%; object-fit: cover; object-position: center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; will-change: transform; }
+        .navbar-hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+        .navbar-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        header.fixed { transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #d91f26, #ba141a); border-radius: 10px; border: 2px solid #f1f1f1; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #ba141a, #a01218); box-shadow: 0 0 2px rgba(0,0,0,0.2); }
+        html { scrollbar-color: #d91f26 #f1f1f1; scrollbar-width: thin; }
+        .hero-gradient-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%); z-index: 0; }
+        .event-card { position: relative; isolation: isolate; transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); will-change: transform, box-shadow; }
+        .event-card::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(120deg, var(--primary-glow, rgba(217, 31, 38, 0.15)), var(--secondary-glow, rgba(255, 206, 0, 0.12))); opacity: 0; transition: opacity 0.4s ease; }
+        .event-card:hover::before { opacity: 1; }
+        .btn-enhanced { position: relative; overflow: hidden; transition: all 0.3s ease; z-index: 1; transform: translateZ(0); }
+        .btn-enhanced::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: rgba(255,255,255,0.1); transition: width 0.4s ease; z-index: -1; }
+        .btn-enhanced:hover::before { width: 100%; }
+        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-scale:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        @media (max-width: 768px) { .parallax-bg:not(video) { transform: translateZ(-0.5px) scale(1.25); } }
+        .parallax-section.min-h-\[40vh\], .parallax-section.min-h-\[50vh\] { overflow: hidden; }
+
+        /* Timeline Styles (from original hoat-dong.html, reviewed for conflicts) */
+        .timeline-container-bg {
+            background-color: #4A0509; /* Deep red background */
+            /* background-image: url('images/timeline-hero-bg.jpg'); Optional */
+            background-size: cover;
+            background-position: center;
+        }
+        .timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 6px; background-color: #E6A456; top: 0; bottom: 0; left: 50%; margin-left: -3px; z-index: 1;}
+        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; z-index: 2;}
+        .timeline-item::after { content: ''; position: absolute; width: 25px; height: 25px; right: -12px; background-color: #4A0509; border: 4px solid #E6A456; top: 25px; border-radius: 50%; z-index: 3;}
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item.left::before { content: " "; height: 0; position: absolute; top: 32px; width: 0; z-index: 2; right: 30px; border: medium solid #E6A456; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent #E6A456;}
+        .timeline-item.right::before { content: " "; height: 0; position: absolute; top: 32px; width: 0; z-index: 2; left: 30px; border: medium solid #E6A456; border-width: 10px 10px 10px 0; border-color: transparent #E6A456 transparent transparent;}
+        .timeline-item.right::after { left: -13px; }
+        .timeline-content { padding: 20px 30px; background-color: rgba(0,0,0,0.3); border: 1px solid #E6A456; border-radius: 6px; color: #f0f0f0; }
+        .timeline-date { font-size: 1.8rem; font-weight: bold; color: #FDE047; margin-bottom: 0.5rem; text-shadow: 1px 1px 2px black;} /* Uses timeline-date color */
+        .timeline-title { font-size: 1.2rem; font-weight: bold; color: #ffce00; margin-bottom: 0.5rem; } /* Uses secondary color */
+        .timeline-description { font-size: 0.9rem; line-height: 1.6; color: #E6A456; } /* Uses timeline-text color */
+        .timeline-image { margin-top: 15px; border-radius: 4px; max-width: 100%; border: 2px solid #E6A456;}
+
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::before { left: 60px; border: medium solid #E6A456; border-width: 10px 10px 10px 0; border-color: transparent #E6A456 transparent transparent; }
+            .timeline-item.left::after, .timeline-item.right::after { left: 18px; }
+            .timeline-item.right { left: 0%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-gray-100 antialiased">
+    <!-- Fixed Header -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 z-[100] navbar-hidden">
+        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center relative">
+            <a href="index.html" class="logo-link transition-opacity hover:opacity-90">
+                <h1 class="text-2xl text-primary font-bold m-0">Dấu Ấn Lịch Sử</h1>
+            </a>
+            <button class="md:hidden p-2 hover:text-primary transition-colors" id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <nav id="main-nav" class="hidden absolute top-full right-0 mt-2 w-full max-w-xs sm:max-w-sm bg-white shadow-xl rounded-lg p-4 z-50 md:static md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none md:p-0 md:mt-0 md:max-w-none">
+                <ul class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-5 list-none w-full md:w-auto md:ml-auto">
+                    <li><a href="index.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Trang Chủ</a></li>
+                    <li><a href="giai-phong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">50 Năm Thống Nhất</a></li>
+                    <li><a href="bac-ho.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">135 Năm Ngày Sinh Bác</a></li>
+                    <li><a href="hoat-dong.html" class="block text-primary font-medium py-2 px-2 relative active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-full after:h-0.5 after:bg-primary">Hoạt Động</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="parallax-wrapper" style="padding-top: 0;">
+        <!-- Hero Parallax Section -->
+        <section class="h-screen bg-gray-700 relative flex justify-center items-center text-center overflow-hidden">
+            <img src="images/hoat-dong-banner.png" alt="Hoạt Động Kỷ Niệm" class="absolute inset-0 w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-black/30 z-0"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-3xl mx-auto flex flex-col justify-center items-center h-full">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 fade-in-element">Hoạt Động Kỷ Niệm</h2>
+                <p class="text-lg md:text-xl fade-in-element" style="transition-delay: 0.2s;">Khám phá các sự kiện và chương trình đặc sắc.</p>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="content-section py-16 md:py-24 timeline-container-bg" style="--bg-color: #4A0509;">
+            <div class="w-[90%] max-w-[1000px] mx-auto px-4 text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary fade-in-element" style="text-shadow: 1px 1px 2px #333;">Lịch Hoạt Động Kỷ Niệm Trọng Điểm</h2>
+                <p class="text-lg text-timeline-text mt-4 fade-in-element">Theo dõi các chương trình đặc biệt trên VTV và các sự kiện khác.</p>
+            </div>
+            <div class="timeline">
+                <!-- Event 1: 20/4 -->
+                <div id="event-dat-nuoc-vui" class="timeline-item left fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">20/4</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT "ĐẤT NƯỚC TRỌN NIỀM VUI"</h3>
+                        <p class="timeline-description">Truyền hình trực tiếp - 20h10 VTV1. Quy tụ hơn 1000 nghệ sĩ, chiến sĩ, với 22 tác phẩm ca múa nhạc, nội dung gần với các giai đoạn lịch sử của dân tộc Việt Nam, chương trình tôn vinh chiến công của cha ông, khơi dậy niềm tự hào dân tộc và khát vọng hoà bình.</p>
+                        <img src="images/event-dat-nuoc-tron-niem-vui.jpg" alt="Đất Nước Trọn Niềm Vui" class="timeline-image">
+                    </div>
+                </div>
+
+                <!-- Event 2: 25/4 & 30/4 -->
+                <div id="event-do-suc-y-chi" class="timeline-item right fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">25/4 & 30/4</div>
+                        <h3 class="timeline-title">VTV ĐẶC BIỆT "CUỘC ĐỌ SỨC CỦA Ý CHÍ"</h3>
+                        <p class="timeline-description">Phát sóng 2 tập - 20h10 VTV1. Câu chuyện chân thực từ góc nhìn của ông Craig McNamara - con trai cựu Bộ trưởng Quốc phòng Mỹ Robert McNamara. Hành trình nội tâm đầy giằng xé của ông khi đối mặt với "di sản chiến tranh" do chính cha mình tạo ra và lời xin lỗi chưa từng nói gửi tới nhân dân Việt Nam.</p>
+                        <img src="images/event-cuoc-do-suc-cua-y-chi.webp" alt="Cuộc Đọ Sức Của Ý Chí" class="timeline-image">
+                    </div>
+                </div>
+                
+                <div id="event-bai-ca-thong-nhat" class="timeline-item left fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">26/4</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT ĐẶC BIỆT "BÀI CA THỐNG NHẤT"</h3>
+                        <p class="timeline-description">Phát sóng 21h00 VTV1. Chương trình mang đến các tác phẩm bất hủ như Tiến về Sài Gòn, Đất nước trọn niềm vui, Trường Sơn Đông - Trường Sơn Tây,... đồng thời kết nối cảm xúc nhiều thế hệ với khách mời nổi bật ở nhiều lĩnh vực để cùng khán giả nhìn lại một chặng đường mất mát, đau thương, nhưng vinh quang và kiêu hãnh của đất nước.</p>
+                        <img src="images/event-bai-ca-thong-nhat.webp" alt="Bài Ca Thống Nhất" class="timeline-image">
+                    </div>
+                </div>
+
+                 <div id="event-noi-vong-tay-lon" class="timeline-item right fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">26/4</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT "NỐI VÒNG TAY LỚN"</h3>
+                        <p class="timeline-description">Truyền hình trực tiếp - 20h00 VTV Cần Thơ. Nêu bật thắng lợi vĩ đại của Chiến dịch Hồ Chí Minh lịch sử, mở ra thời kỳ độc lập, thống nhất và phát triển đất nước.</p>
+                        <img src="images/event-noi-vong-tay-lon.webp" alt="Nối Vòng Tay Lớn" class="timeline-image">
+                    </div>
+                </div>
+
+                <div id="event-tieng-noi-luong-tri" class="timeline-item left fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">26/4</div>
+                        <h3 class="timeline-title">PHIM TÀI LIỆU "TIẾNG NÓI CỦA LƯƠNG TRI"</h3>
+                        <p class="timeline-description">Phát sóng - 22h00 VTV1. Khắc hoạ cuộc đời của tù binh phản chiến Eugene Wilber, một phi công đồng thời là sĩ quan chỉ huy đã bị bắn rơi tại Việt Nam vào năm 1969. Bộ phim bám theo cuộc hành trình trong hiện tại của người con - Tom Wilber, để lật giở lại những dấu chân trong quá khứ của người cha và hiểu hơn về quyết định của ông khi đứng về phía Việt Nam trong cuộc kháng chiến chống Mỹ.</p>
+                        <img src="images/event-tieng-noi-luong-tri.webp" alt="Tiếng Nói Của Lương Tri" class="timeline-image">
+                    </div>
+                </div>
+                
+                <div id="event-vang-mai-khuc-khai-hoan" class="timeline-item right fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">27/4</div>
+                        <h3 class="timeline-title">CẦU TRUYỀN HÌNH "VANG MÃI KHÚC KHẢI HOÀN"</h3>
+                        <p class="timeline-description">Truyền hình trực tiếp - 20h10 VTV1. Chương trình là bản trường ca nghệ thuật được thực hiện tại các điểm cầu: Công viên Thống nhất (Hà Nội), Kỳ Đài Hiền Lương, Khu di tích Quốc gia đặc biệt đôi bờ Hiền Lương - Bến Hải (Quảng Trị) và Công viên Bờ sông Sài Gòn, Tp Thủ Đức (TP. Hồ Chí Minh).</p>
+                        <img src="images/event-vang-mai-khuc-khai-hoan.jpg" alt="Vang Mãi Khúc Khải Hoàn" class="timeline-image">
+                    </div>
+                </div>
+
+                <div id="event-giua-vong-vay-quan-thu" class="timeline-item left fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">27/4</div>
+                        <h3 class="timeline-title">PHIM TÀI LIỆU "GIỮA VÒNG VÂY QUÂN THÙ"</h3>
+                        <p class="timeline-description">Phát sóng - 21h50 VTV1. Không chỉ là câu chuyện về chiến công của một nhà tình báo, mà còn là câu chuyện về một nhân cách lớn - nhà tình báo, Anh hùng lực lượng vũ trang nhân dân Phạm Ngọc Thảo.</p>
+                        <img src="images/event-giua-vong-vay-quan-thu.webp" alt="Giữa Vòng Vây Quân Thù" class="timeline-image">
+                    </div>
+                </div>
+
+                <div id="event-dang-trong-mua-xuan" class="timeline-item right fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">28/4</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT "ĐẢNG TRONG MÙA XUÂN ĐẠI THẮNG"</h3>
+                        <p class="timeline-description">Phát sóng - 20h10 VTV1.</p>
+                         <img src="images/event-dang-trong-mua-xuan.webp" alt="Đảng Trong Mùa Xuân Đại Thắng" class="timeline-image">
+                    </div>
+                </div>
+                
+                <div id="event-mua-xuan-thong-nhat" class="timeline-item left fade-in-element">
+                    <div class="timeline-content">
+                        <div class="timeline-date">29/4</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT ĐẶC BIỆT "MÙA XUÂN THỐNG NHẤT"</h3>
+                        <p class="timeline-description">Truyền hình trực tiếp - 20h10 VTV1. Với sự tham gia của 1.000 người gồm các nghệ sĩ, nhóm nghệ sĩ, dàn nhạc, hợp xướng, diễn viên múa... mang đến những ca khúc đã đi vào lòng các thế hệ người yêu nhạc hơn nửa thế kỷ qua.</p>
+                        <img src="images/event-mua-xuan-thong-nhat.jpg" alt="Mùa Xuân Thống Nhất" class="timeline-image">
+                    </div>
+                </div>
+
+                <div id="event-dieu-binh" class="timeline-item right fade-in-element"> <!-- ID from index.html for this event -->
+                    <div class="timeline-content">
+                        <div class="timeline-date">30/4</div>
+                        <h3 class="timeline-title">TRUYỀN HÌNH TRỰC TIẾP LỄ KỶ NIỆM, DIỄU BINH, DIỄU HÀNH CẤP QUỐC GIA</h3>
+                        <p class="timeline-description">Từ 7h00 ngày 30/4 trên VTV1 và một số đài PT-TH địa phương. Từ 6h30 ngày 30/4 trên VTVgo. Lễ kỷ niệm, diễu binh, diễu hành cấp quốc gia nhân dịp 50 năm Ngày Giải phóng miền Nam, thống nhất đất nước là sự kiện đặc biệt được người dân cả nước và bạn bè quốc tế chờ đón.</p>
+                        <img src="images/event-le-ky-niem.webp" alt="Lễ Kỷ Niệm" class="timeline-image">
+                    </div>
+                </div>
+                
+                <div id="event-nghe-thuat-bac" class="timeline-item left fade-in-element"> <!-- ID from index.html for this event type -->
+                    <div class="timeline-content">
+                         <div class="timeline-date">19/5</div>
+                        <h3 class="timeline-title">CHƯƠNG TRÌNH NGHỆ THUẬT ĐẶC BIỆT "KHÁT VỌNG - TỎA SÁNG"</h3>
+                        <p class="timeline-description">Kỷ niệm 135 năm ngày sinh Chủ tịch Hồ Chí Minh, tôn vinh di sản của Người. (Chi tiết sẽ được cập nhật)</p>
+                        <img src="images/event2.webp" alt="Chương trình nghệ thuật Khát Vọng - Tỏa Sáng" class="timeline-image">
+                    </div>
+                </div>
+                
+                <div id="event-hanh-trinh-bac" class="timeline-item right fade-in-element"> <!-- ID from index.html for this event type -->
+                    <div class="timeline-content">
+                        <div class="timeline-date">01-19/5</div>
+                        <h3 class="timeline-title">HÀNH TRÌNH THEO DẤU CHÂN BÁC</h3>
+                        <p class="timeline-description">Chuỗi hoạt động về nguồn, thăm các di tích lịch sử gắn liền với cuộc đời và sự nghiệp của Chủ tịch Hồ Chí Minh trên cả nước. (Chi tiết sẽ được cập nhật)</p>
+                        <img src="images/event3.png" alt="Hành Trình Theo Dấu Chân Bác" class="timeline-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="content-section bg-gray-900 text-white pt-16 pb-8">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+                    <div class="fade-in-element">
+                        <h2 class="text-2xl font-bold text-secondary mb-4">Dấu Ấn Lịch Sử</h2>
+                        <p class="text-gray-400 leading-relaxed">Trang web kỷ niệm 50 năm ngày giải phóng miền Nam, thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh.</p>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Liên Kết Nhanh</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Trang Chủ</a></li>
+                            <li><a href="giai-phong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">50 Năm Thống Nhất</a></li>
+                            <li><a href="bac-ho.html" class="text-gray-300 hover:text-white hover:underline transition-colors">135 Năm Ngày Sinh Bác</a></li>
+                            <li><a href="hoat-dong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Hoạt Động</a></li>
+                            <li><a href="thu-vien.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Thư Viện</a></li>
+                        </ul>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.4s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Thông Tin Liên Hệ</h3>
+                        <p class="text-gray-300 mb-2">Ban Tổ Chức Lễ Kỷ Niệm Quốc Gia</p>
+                        <p class="text-gray-300 mb-2"><span class="font-semibold">Email:</span> info@dauanlichsu.vn</p>
+                        <p class="text-gray-300"><span class="font-semibold">Điện thoại:</span> (024) 1234 5678</p>
+                    </div>
+                </div>
+                <div class="text-center pt-8 border-t border-gray-700 text-gray-500 text-sm fade-in-element" style="transition-delay: 0.6s;">
+                    <p>&copy; <span id="currentYear">2025</span> Ban Tổ Chức Lễ Kỷ Niệm. Phát triển bởi Nhóm Sinh Viên Yêu Nước.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Current Year for Footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Parallax Effect
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+            let tickingParallax = false;
+            
+            function updateParallax() {
+                parallaxBgs.forEach(bg => {
+                    if (bg.tagName.toLowerCase() === 'video') return;
+                    
+                    const section = bg.closest('.parallax-section'); // Sẽ không tìm thấy section này cho hero nữa nếu class đã bị xóa
+                    if (!section || !bg.dataset.parallaxSpeed) return; // Thêm điều kiện !bg.dataset.parallaxSpeed
+                    
+                    const rect = section.getBoundingClientRect();
+                    
+                    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                        const speed = parseFloat(bg.dataset.parallaxSpeed); // Không cần giá trị mặc định ở đây nữa
+                        const maxOffset = rect.height * 0.1; 
+                        let yPos = rect.top * speed; 
+                        yPos = Math.max(-maxOffset, Math.min(yPos, maxOffset));
+                        bg.style.transform = `translateZ(-0.5px) scale(1.3) translateY(${yPos}px)`;
+                    }
+                });
+                tickingParallax = false;
+            }
+            
+            function requestParallaxTick() {
+                if (!tickingParallax) {
+                    requestAnimationFrame(updateParallax);
+                    tickingParallax = true;
+                }
+            }
+
+            const parallaxWrapper = document.querySelector('.parallax-wrapper'); 
+
+            // Navbar Visibility & Mobile Menu
+            const header = document.querySelector('header.fixed');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mainNav = document.getElementById('main-nav');
+            
+            let lastScrollY = 0;
+            const navbarScrollThreshold = 10; // Show navbar if scrolled less than this from top
+
+            if (parallaxWrapper) {
+                lastScrollY = parallaxWrapper.scrollTop;
+            } else if (typeof window !== 'undefined') {
+                lastScrollY = window.scrollY;
+            }
+
+            if (header) {
+                const initialScroll = parallaxWrapper ? parallaxWrapper.scrollTop : (typeof window !== 'undefined' ? window.scrollY : 0);
+                if (initialScroll <= navbarScrollThreshold) {
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                }
+            }
+
+            function handleNavbarState() {
+                if (!header) return;
+
+                let currentScrollY = 0;
+                if (parallaxWrapper) {
+                    currentScrollY = parallaxWrapper.scrollTop;
+                } else if (typeof window !== 'undefined') {
+                    currentScrollY = window.scrollY;
+                }
+
+                const headerHeight = header.offsetHeight;
+
+                if (currentScrollY > lastScrollY && currentScrollY > headerHeight) {
+                    header.classList.add('navbar-hidden');
+                    header.classList.remove('navbar-visible');
+                    if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) {
+                        mainNav.classList.add('hidden');
+                        if (mobileMenuButton) {
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                } else if (currentScrollY < lastScrollY || currentScrollY <= navbarScrollThreshold) {
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                }
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+            }
+            
+            if (mobileMenuButton && mainNav) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mainNav.classList.toggle('hidden'); 
+                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded); 
+                });
+            }
+
+            // Fade-in Elements on Scroll
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    if (hrefAttribute.length > 1) { 
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) { 
+                                mainNav.classList.add('hidden');
+                                if (mobileMenuButton) {
+                                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            if (parallaxWrapper) {
+                parallaxWrapper.addEventListener('scroll', () => {
+                    if (parallaxBgs.length > 0) { 
+                        requestParallaxTick();
+                    }
+                    handleNavbarState(); 
+                }, { passive: true });
+            } else if (typeof window !== 'undefined') {
+                window.addEventListener('scroll', handleNavbarState, { passive: true });
+                console.warn('.parallax-wrapper not found. Using window scroll for navbar.');
+            } else {
+                console.warn('.parallax-wrapper not found and window object not available. Navbar scroll behavior might not work.');
+            }
+
+            // Registration Form specific to hoat-dong.html
+            const registrationForm = document.getElementById('registration-form');
+            const formMessage = document.getElementById('form-message');
+
+            if (registrationForm && formMessage) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Basic form validation feedback
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+
+                    if (!name || !email || !consent) {
+                        formMessage.textContent = 'Vui lòng điền đầy đủ thông tin bắt buộc và đồng ý với điều khoản.';
+                        formMessage.className = 'mt-4 text-center text-sm text-red-600';
+                        return;
+                    }
+                    
+                    formMessage.textContent = 'Đăng ký thành công! Chúng tôi sẽ gửi thông tin cập nhật đến bạn.';
+                    formMessage.className = 'mt-4 text-center text-sm text-green-600';
+                    registrationForm.reset(); 
+                    
+                    // Here you would typically send data to a server
+                    // For example: fetch('/api/register', { method: 'POST', body: new FormData(registrationForm) })
+                    // .then(response => response.json()).then(data => console.log(data));
+                });
+            }
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+    
+    .logo {
+        margin-bottom: 15px;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-nav ul li {
+        margin: 5px 0;
+    }
+    
+    .hero-content h2 {
+        font-size: 32px;
+    }
+    
+    .hero-content h3 {
+        font-size: 20px;
+    }
+    
+    .intro-card, 
+    .intro-card.reverse {
+        flex-direction: column;
+    }
+    
+    .intro-image {
+        min-height: 200px;
+    }
+    
+    blockquote {
+        font-size: 24px;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .hero-content h2 {
+        font-size: 40px;
+    }
+    
+    .event-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

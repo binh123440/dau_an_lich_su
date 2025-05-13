@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh | Dấu Ấn Lịch Sử</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Google Fonts: Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#d91f26',
+              secondary: '#ffce00',
+              dark: '#333',
+            },
+            fontFamily: {
+              sans: ['Quicksand', 'Roboto', 'system-ui', 'sans-serif'], // Updated font family
+            }
+          }
+        }
+      }
+    </script>
+    <link href="css/tailwind-components.css" rel="stylesheet">
+    <!-- Custom Styles for Parallax -->
+    <style>
+        html { scroll-behavior: smooth; }
+        .parallax-wrapper { height: 100vh; overflow-x: hidden; overflow-y: auto; perspective: 3px; /* Consistent with JS parallax */ scroll-behavior: smooth; will-change: scroll-position; -webkit-overflow-scrolling: touch; transform-style: preserve-3d; }
+        .parallax-section { position: relative; display: flex; justify-content: center; align-items: center; min-height: 50vh; width:100%; transform-style: preserve-3d; z-index: 1; backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; height: auto; }
+        .parallax-section.h-screen { min-height: 100vh; }
+        .parallax-bg { position: absolute; top:0; left:0; width: 50%; height: 50%; object-fit: cover; z-index: -1; /* transform removed, js/main.js handles it */ image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; will-change: transform; }
+        .content-section { background-color: var(--bg-color, white); position: relative; z-index: 2; isolation: isolate; }
+        .fade-in-element { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
+        .fade-in-element.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Navbar styles */
+        .navbar-hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+        .navbar-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        header.fixed { transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #d91f26, #ba141a); border-radius: 10px; border: 2px solid #f1f1f1; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #ba141a, #a01218); box-shadow: 0 0 2px rgba(0,0,0,0.2); }
+        html { scrollbar-color: #d91f26 #f1f1f1; scrollbar-width: thin; }
+
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%); /* Darker overlay for better text contrast */
+            z-index: 0;
+        }
+        .parallax-section.min-h-\[40vh\], .parallax-section.min-h-\[50vh\] { overflow: hidden; }
+    </style>
+</head>
+<body class="font-sans text-dark bg-gray-100">
+    <!-- Fixed Header -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 z-[100] navbar-hidden">
+        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="logo-link">
+                <h1 class="text-2xl text-primary font-bold m-0">Dấu Ấn Lịch Sử</h1>
+            </a>
+            <nav id="main-nav" class="hidden md:flex md:items-center">
+                <ul class="flex flex-col md:flex-row list-none md:ml-auto">
+                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="index.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Trang Chủ</a></li>
+                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="giai-phong.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">50 Năm Thống Nhất</a></li>
+                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="bac-ho.html" class="text-primary font-medium py-2.5 px-1.5 relative active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">135 Năm Ngày Sinh Bác</a></li>
+                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="hoat-dong.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Hoạt Động</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden p-2" id="mobile-menu-button" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </div>
+    </header>
+    <div class="parallax-wrapper pt-[12px]"> 
+        <!-- Hero Parallax Section -->
+        <section class="relative h-screen flex justify-center items-center text-center overflow-hidden">
+            <img src="images/bac-ho-banner2.png" alt="135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh" class="absolute inset-0 w-full h-full object-cover z-[-1]">
+            <div class="hero-gradient-overlay"></div>
+            <div class="relative z-10 text-white p-8 max-w-4xl mx-auto"> 
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight drop-shadow-lg fade-in-element">
+                    135 Năm Ngày Sinh<br class="hidden sm:block"> Chủ Tịch Hồ Chí Minh
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 font-light leading-relaxed drop-shadow-md fade-in-element" style="transition-delay: 0.2s;">
+                    Tưởng nhớ cuộc đời và sự nghiệp vĩ đại của Người, vị lãnh tụ kính yêu của dân tộc Việt Nam.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content Section -->
+        <section class="content-section py-16 md:py-24 bg-gray-50">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <h2 class="section-title-tw text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center mb-12 md:mb-16 relative pb-4 after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-24 after:h-1 after:bg-secondary fade-in-element">Cuộc Đời Và Sự Nghiệp Vĩ Đại</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16 fade-in-element">
+                    <div class="rounded-lg overflow-hidden shadow-xl"><img src="images/bac-ho-1.jpg" alt="Bác Hồ thời trẻ và hành trình tìm đường cứu nước" class="w-full h-auto object-cover"></div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl text-primary font-bold mb-4">Hành Trình Tìm Đường Cứu Nước</h3>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">Ngày 5/6/1911, từ Bến Nhà Rồng, người thanh niên yêu nước Nguyễn Tất Thành ra đi tìm đường cứu nước, giải phóng dân tộc. Ba mươi năm bôn ba hải ngoại đã hun đúc ý chí và định hình con đường cách mạng cho Việt Nam.</p>
+                        <p class="text-lg text-gray-700 leading-relaxed">Người đã tiếp xúc với chủ nghĩa Mác - Lênin, tìm thấy ở đó con đường chân chính để giải phóng dân tộc, kết hợp độc lập dân tộc với chủ nghĩa xã hội.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16 fade-in-element">
+                    <div class="rounded-lg overflow-hidden shadow-xl md:order-2"><img src="images/bac-ho-2.jpg" alt="Bác Hồ đọc Tuyên ngôn Độc lập năm 1945" class="w-full h-auto object-cover"></div>
+                    <div class="text-center md:text-left md:order-1">
+                        <h3 class="text-3xl text-primary font-bold mb-4">Lãnh Đạo Cách Mạng Việt Nam</h3>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">Chủ tịch Hồ Chí Minh là người sáng lập, lãnh đạo và rèn luyện Đảng Cộng sản Việt Nam. Dưới sự lãnh đạo của Người, cách mạng Việt Nam đã giành được những thắng lợi vĩ đại: Cách mạng Tháng Tám năm 1945, thành lập nước Việt Nam Dân chủ Cộng hòa; chiến thắng Điện Biên Phủ năm 1954; và đại thắng mùa Xuân năm 1975, giải phóng miền Nam, thống nhất đất nước.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-element">
+                     <div class="rounded-lg overflow-hidden shadow-xl"><img src="images/bac-ho-3.jpg" alt="Di chúc của Chủ tịch Hồ Chí Minh" class="w-full h-auto object-cover"></div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl text-primary font-bold mb-4">Di Sản Tư Tưởng Hồ Chí Minh</h3>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">Tư tưởng Hồ Chí Minh là một hệ thống quan điểm toàn diện và sâu sắc về những vấn đề cơ bản của cách mạng Việt Nam, là kết quả của sự vận dụng và phát triển sáng tạo chủ nghĩa Mác - Lênin vào điều kiện cụ thể của nước ta, kế thừa và phát triển các giá trị truyền thống tốt đẹp của dân tộc, tiếp thu tinh hoa văn hóa nhân loại.</p>
+                        <p class="text-lg text-gray-700 leading-relaxed">Di chúc của Người là một văn kiện lịch sử vô giá, kết tinh tư tưởng, đạo đức, phong cách Hồ Chí Minh, là lời căn dặn thiết tha đối với toàn Đảng, toàn dân và toàn quân ta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section py-16 md:py-24 bg-white">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <h2 class="section-title-tw text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center mb-12 md:mb-16 relative pb-4 after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-24 after:h-1 after:bg-secondary fade-in-element">Hoạt Động Kỷ Niệm 135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh</h2>
+                
+                <article class="bg-white rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl fade-in-element mt-12">
+                    <div class="md:flex flex-wrap">
+                        <div class="md:w-2/5 h-64 md:h-auto overflow-hidden">
+                            <img src="images/hcm-event1.jpg" alt="Lễ dâng hương tại Lăng Bác" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-3/5 p-6 md:p-8">
+                            <span class="inline-block px-4 py-1.5 bg-secondary text-dark text-base font-semibold rounded-full mb-4">19/05/2025</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-4">Lễ Dâng Hương Trọng Thể Tại Lăng Chủ Tịch Hồ Chí Minh</h3>
+                            <p class="text-gray-700 mb-4 text-base md:text-lg leading-relaxed">
+                                Nhân kỷ niệm 135 năm ngày sinh Chủ tịch Hồ Chí Minh (19/05/1890 - 19/05/2025), một buổi lễ dâng hương trọng thể và trang nghiêm sẽ được tổ chức tại Lăng Chủ tịch Hồ Chí Minh và Khu Di tích Phủ Chủ tịch tại Hà Nội. Đây là một trong những hoạt động chính trong chuỗi sự kiện toàn quốc nhằm tôn vinh những cống hiến vĩ đại của Người.
+                            </p>
+                            <p class="text-gray-700 mb-4 text-base md:text-lg leading-relaxed">
+                                Đây là hoạt động thường niên mang ý nghĩa sâu sắc, thể hiện lòng thành kính, biết ơn vô hạn của toàn Đảng, toàn dân và toàn quân ta đối với công lao trời biển của Người - vị lãnh tụ thiên tài, người thầy vĩ đại của cách mạng Việt Nam, Anh hùng giải phóng dân tộc, Danh nhân văn hóa thế giới. Không khí trang nghiêm và xúc động bao trùm quảng trường Ba Đình lịch sử trong suốt buổi lễ.
+                            </p>
+                            <p class="text-gray-700 mb-4 text-base md:text-lg leading-relaxed">
+                                Các đoàn đại biểu từ khắp mọi miền Tổ quốc, các tổ chức quốc tế và đông đảo nhân dân sẽ về đây, xếp hàng trang nghiêm, kính cẩn dâng lên Bác những bó hoa tươi thắm và nén hương thơm, bày tỏ lòng biết ơn sâu sắc. Những bài ca cách mạng ca ngợi Đảng, Bác Hồ và tình yêu quê hương đất nước sẽ được vang lên, tạo nên một không khí hào hùng và đầy tự hào.
+                            </p>
+                            <p class="text-gray-700 mb-6 text-base md:text-lg leading-relaxed">
+                                Buổi lễ dự kiến có sự tham gia của các đồng chí lãnh đạo Đảng, Nhà nước, Mặt trận Tổ quốc Việt Nam, các ban, bộ, ngành Trung ương và địa phương cùng đông đảo các tầng lớp nhân dân, thanh thiếu niên và nhi đồng. Công tác chuẩn bị cho buổi lễ được tiến hành chu đáo, đảm bảo an ninh, an toàn và sự trang trọng.
+                            </p>
+                            <a href="hoat-dong.html#event-dang-huong-bac" class="font-semibold text-primary hover:text-[#ba141a] transition-colors text-base group inline-flex items-center">
+                                Tìm hiểu thêm về các hoạt động khác 
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Additional Images Section -->
+                        <div class="w-full p-6 md:p-8 mt-6 md:mt-0">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-4">Khoảnh Khắc Từ Buổi Lễ</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                <div class="rounded-lg overflow-hidden shadow-md">
+                                    <img src="images/hcm-event1-detail1.jpg" alt="Đoàn người vào Lăng viếng Bác" class="w-full h-40 object-cover">
+                                </div>
+                                <div class="rounded-lg overflow-hidden shadow-md">
+                                    <img src="images/hcm-event1-detail2.jpg" alt="Không khí trang nghiêm tại Quảng trường Ba Đình" class="w-full h-40 object-cover">
+                                </div>
+                                <div class="rounded-lg overflow-hidden shadow-md col-span-2 sm:col-span-1">
+                                    <img src="images/hcm-event1-detail3.jpg" alt="Lực lượng vũ trang trong lễ dâng hương" class="w-full h-40 object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Quote Parallax Section -->
+        <section class="parallax-section min-h-[40vh] md:min-h-[50vh]">
+            <img src="images/bac-ho-quote-bg.jpg" alt="Bác Hồ làm việc" class="parallax-bg absolute inset-0 object-cover brightness-50"
+            data-parallax-speed="0.05" 
+            loading="lazy"> <!-- Choose a relevant background -->
+            <div class="relative z-10 max-w-3xl mx-auto text-center text-white p-8 fade-in-element">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-secondary mx-auto mb-6" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/></svg>
+                <blockquote class="text-2xl md:text-4xl italic font-light leading-relaxed mb-6">
+                    "Tôi chỉ có một sự ham muốn, ham muốn tột bậc, là làm sao cho nước ta được hoàn toàn độc lập, dân ta được hoàn toàn tự do, đồng bào ai cũng có cơm ăn áo mặc, ai cũng được học hành."
+                </blockquote>
+                <cite class="block text-lg md:text-xl font-semibold">— Chủ tịch Hồ Chí Minh</cite>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="content-section bg-gray-900 text-white pt-16 pb-8">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+                    <div class="fade-in-element"><h2 class="text-2xl font-bold text-secondary mb-4">Dấu Ấn Lịch Sử</h2><p class="text-gray-400 leading-relaxed">Trang web kỷ niệm 50 năm ngày giải phóng miền Nam, thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh.</p></div>
+                    <div class="fade-in-element" style="transition-delay: 0.2s;"><h3 class="text-xl font-semibold text-secondary mb-4">Liên Kết Nhanh</h3><ul class="space-y-2"><li><a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Trang Chủ</a></li><li><a href="giai-phong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">50 Năm Thống Nhất</a></li><li><a href="bac-ho.html" class="text-gray-300 hover:text-white hover:underline transition-colors">135 Năm Ngày Sinh Bác</a></li><li><a href="hoat-dong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Hoạt Động</a></li><li><a href="thu-vien.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Thư Viện</a></li></ul></div>
+                    <div class="fade-in-element" style="transition-delay: 0.4s;"><h3 class="text-xl font-semibold text-secondary mb-4">Thông Tin Liên Hệ</h3><p class="text-gray-300 mb-2">Ban Tổ Chức Lễ Kỷ Niệm Quốc Gia</p><p class="text-gray-300 mb-2"><span class="font-semibold">Email:</span> info@dauanlichsu.vn</p><p class="text-gray-300"><span class="font-semibold">Điện thoại:</span> (024) 1234 5678</p></div>
+                </div>
+                <div class="text-center pt-8 border-t border-gray-700 text-gray-500 text-sm fade-in-element" style="transition-delay: 0.6s;"><p>&copy; <span id="currentYear">2025</span> Ban Tổ Chức Lễ Kỷ Niệm. Phát triển bởi Nhóm Sinh Viên Yêu Nước.</p></div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Current Year for Footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Navbar Visibility & Mobile Menu (like giai-phong.html)
+            const header = document.querySelector('header.fixed');
+            const parallaxWrapper = document.querySelector('.parallax-wrapper');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mainNav = document.getElementById('main-nav');
+            
+            let lastScrollY = 0;
+            const navbarScrollThreshold = 10; // Show navbar if scrolled less than this from top
+
+            if (parallaxWrapper) {
+                lastScrollY = parallaxWrapper.scrollTop;
+            } else if (typeof window !== 'undefined') {
+                lastScrollY = window.scrollY;
+                console.warn('.parallax-wrapper not found for scroll calculations. Using window.scrollY.');
+            }
+
+            function initializeNavbarState() {
+                if (!header) return;
+                let currentInitialScroll = 0;
+                if (parallaxWrapper) {
+                    currentInitialScroll = parallaxWrapper.scrollTop;
+                } else if (typeof window !== 'undefined') {
+                    currentInitialScroll = window.scrollY;
+                }
+
+                if (currentInitialScroll <= navbarScrollThreshold) {
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                } else {
+                    // Ensures it respects the navbar-hidden class if not at the very top
+                    if (!header.classList.contains('navbar-hidden')) {
+                         header.classList.add('navbar-hidden');
+                         header.classList.remove('navbar-visible');
+                    }
+                }
+            }
+            
+            function handleNavbarState() {
+                if (!header) return;
+
+                let currentScrollY = 0;
+                if (parallaxWrapper) {
+                    currentScrollY = parallaxWrapper.scrollTop;
+                } else if (typeof window !== 'undefined') {
+                    currentScrollY = window.scrollY;
+                }
+                
+                const headerHeight = header.offsetHeight;
+
+                if (currentScrollY > lastScrollY && currentScrollY > headerHeight) { // Scrolling down
+                    header.classList.add('navbar-hidden');
+                    header.classList.remove('navbar-visible');
+                    if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) {
+                        mainNav.classList.add('hidden');
+                        if (mobileMenuButton) {
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                } else if (currentScrollY < lastScrollY || currentScrollY <= navbarScrollThreshold) { // Scrolling up or near top
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                }
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+            }
+            
+            if (mobileMenuButton && mainNav) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mainNav.classList.toggle('hidden'); 
+                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded)); 
+                });
+            }
+
+            if (parallaxWrapper) {
+                parallaxWrapper.addEventListener('scroll', handleNavbarState, { passive: true });
+            } else if (typeof window !== 'undefined') {
+                window.addEventListener('scroll', handleNavbarState, { passive: true });
+                console.warn('.parallax-wrapper not found for scroll events. Using window scroll for navbar.');
+            }
+            
+            initializeNavbarState(); // Set initial state
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kỷ niệm 50 năm thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh">
+    <title>Dấu Ấn Lễ Kỷ Niệm 50 Năm Thống Nhất Đất Nước</title>
+    <link rel="preload" href="videos/hero-video.mp4" as="video" type="video/mp4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#d91f26',
+              secondary: '#ffce00',
+              dark: '#333',
+            },
+            fontFamily: {
+              sans: ['Quicksand', 'Roboto', 'system-ui', 'sans-serif'],
+            },
+            scale: {
+              '102': '1.02',
+            },
+            transitionProperty: {
+              'height': 'height',
+              'spacing': 'margin, padding',
+            }
+          }
+        }
+      }
+    </script>
+    <link href="css/tailwind-components.css" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .parallax-wrapper { 
+            height: 100vh; 
+            overflow-x: hidden; 
+            overflow-y: auto; 
+            perspective: 3px; 
+            will-change: scroll-position;
+            -webkit-overflow-scrolling: touch; 
+            transform-style: preserve-3d;
+            scroll-behavior: smooth;
+        }
+        
+        .parallax-section { 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 50vh; 
+            width: 100%; 
+            transform-style: preserve-3d; 
+            z-index: 1; 
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+            height: auto;
+        }
+        
+        .parallax-section.h-screen { 
+            min-height: 100vh; 
+        }
+        
+        .content-section { 
+            background-color: white; 
+            position: relative; 
+            z-index: 2;
+            isolation: isolate; 
+        }
+        
+        .fade-in-element { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+            will-change: opacity, transform;
+        }
+        
+        .fade-in-element.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 0;
+        }
+        
+        video.parallax-bg {
+            transform: none !important; 
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            will-change: transform;
+        }
+        
+        .event-card {
+            position: relative;
+            isolation: isolate;
+            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+            will-change: transform, box-shadow;
+        }
+        
+        .event-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            background: linear-gradient(120deg, var(--primary-glow, rgba(217, 31, 38, 0.15)), var(--secondary-glow, rgba(255, 206, 0, 0.12)));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .event-card:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-enhanced {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+            transform: translateZ(0); 
+        }
+        
+        .btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn-enhanced:hover::before {
+            width: 100%;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .parallax-bg {
+                transform: translateZ(-0.5px) scale(1.25); 
+            }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #d91f26, #ba141a);
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #ba141a, #a01218);
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        }
+        
+        html {
+            scrollbar-color: #d91f26 #f1f1f1;
+            scrollbar-width: thin;
+        }
+        
+        .parallax-section.min-h-\[40vh\], 
+        .parallax-section.min-h-\[50vh\] {
+            overflow: hidden;
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+
+        .navbar-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none; 
+        }
+
+        .navbar-visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto; 
+        }
+
+        header.fixed { 
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-dark bg-gray-100 antialiased">
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 z-[100] navbar-hidden">
+        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center relative">
+            <a href="index.html" class="logo-link transition-opacity hover:opacity-90">
+                <h1 class="text-2xl text-primary font-bold m-0">Dấu Ấn Lịch Sử</h1>
+            </a>
+            
+            <button class="md:hidden p-2 hover:text-primary transition-colors" id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <nav id="main-nav" class="hidden absolute top-full right-0 mt-2 w-full max-w-xs sm:max-w-sm bg-white shadow-xl rounded-lg p-4 z-50 md:static md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none md:p-0 md:mt-0 md:max-w-none">
+                <ul class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-5 list-none w-full md:w-auto md:ml-auto">
+                    <li>
+                        <a href="index.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full active:after:w-full">Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="giai-phong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">50 Năm Thống Nhất</a>
+                    </li>
+                    <li>
+                        <a href="bac-ho.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">135 Năm Ngày Sinh Bác</a>
+                    </li>
+                    <li>
+                        <a href="hoat-dong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Hoạt Động</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="parallax-wrapper" style="padding-top: 0;">
+        <section class="h-screen relative overflow-hidden flex flex-col text-white">
+            <video autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover -z-10" style="filter: brightness(0.8) contrast(1.0) saturate(1.05);">
+                <source src="videos/hero-video.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+            
+            <div class="absolute inset-0 bg-black/25 -z-10"></div>
+
+            <div class="absolute top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-start z-20">
+                <div>
+                    <span class="inline-block text-base md:text-lg text-gray-200 tracking-widest uppercase font-medium border-b-2 border-t-2 border-secondary/40 px-4 py-2 shadow-sm" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Lịch sử hào hùng của dân tộc</span> 
+                </div>
+
+                <div class="text-right">
+                    <h2 class="text-2xl md:text-4xl font-bold text-white drop-shadow-xl leading-tight mb-2"> 
+                        Kỷ Niệm <span class="text-secondary">50 Năm</span><br>Thống Nhất Đất Nước
+                    </h2>
+                    <h3 class="text-xl md:text-2xl font-semibold mt-2 text-white drop-shadow-lg"> 
+                        135 Năm Ngày Sinh <span class="text-secondary">Chủ Tịch Hồ Chí Minh</span>
+                    </h3>
+                </div>
+            </div>
+            
+            <div class="relative z-10 flex-grow flex flex-col justify-center items-center text-center p-4">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white visible max-w-4xl mx-auto drop-shadow-2xl leading-normal sm:leading-relaxed" style="transition-delay: 0.4s; text-shadow: 2px 2px 6px rgba(0,0,0,0.7);">
+                    Non Sông Thu Về Một Mối,<br class="md:hidden"> <span class="text-secondary">Rạng Ngời Di Sản Hồ Chí Minh.</span>
+                </h1>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center pb-8 md:pb-12">
+                <div class="fade-in-element visible flex flex-col md:flex-row justify-center gap-5 md:gap-6" style="transition-delay: 0.6s;">
+                    <a href="giai-phong.html" class="bg-primary hover:bg-[#c41822] text-white font-semibold rounded-lg text-lg px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg relative overflow-hidden group btn-enhanced"> 
+                        <span class="relative z-10">50 Năm Thống Nhất</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#d91f26]/80 to-[#ba141a]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="bac-ho.html" class="bg-secondary hover:bg-[#e6b900] text-gray-900 font-semibold rounded-lg text-lg px-10 py-5 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg relative overflow-hidden group btn-enhanced"> 
+                        <span class="relative z-10">135 Năm Ngày Sinh Bác Hồ</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#ffce00]/80 to-[#ffb700]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+                 <div class="mt-8"> 
+                    <span class="text-sm mb-1 text-gray-200 font-medium" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Kéo xuống</span>
+                    <svg class="w-5 h-5 mx-auto animate-bounce text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </div>
+            
+            <div class="absolute w-96 h-96 bg-primary/10 blur-[120px] rounded-full top-1/4 -left-48 z-0 opacity-50"></div>
+            <div class="absolute w-64 h-64 bg-secondary/15 blur-[100px] rounded-full bottom-1/3 right-0 z-0 opacity-40"></div>
+        </section>
+
+        <section class="content-section py-20 md:py-32 bg-white">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 md:mb-28 fade-in-element">
+                    <div class="rounded-xl overflow-hidden shadow-2xl group relative aspect-video md:aspect-[4/3]"> 
+                        <img src="images/giai-phong.webp" alt="Giải phóng miền Nam" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div> 
+                    </div>
+                    <div class="text-center md:text-left">
+                        <span class="inline-block bg-secondary/20 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Sự Kiện Lịch Sử</span>
+                        <h3 class="text-3xl lg:text-4xl text-primary font-extrabold mb-5 leading-tight">50 Năm Giải Phóng Miền Nam, Thống Nhất Đất Nước</h3>
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Ngày 30/4/1975 là một mốc son chói lọi trong lịch sử dân tộc, đánh dấu chiến thắng vĩ đại của cuộc kháng chiến chống Mỹ cứu nước, chấm dứt 21 năm chia cắt, mở ra kỷ nguyên mới - kỷ nguyên độc lập, tự do và thống nhất trên cả nước.
+                        </p>
+                        <a href="giai-phong.html" class="inline-flex items-center justify-center font-semibold text-white bg-primary hover:bg-[#ba141a] transition-colors text-base group px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            Tìm Hiểu Thêm 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center fade-in-element">
+                    <div class="rounded-xl overflow-hidden shadow-2xl md:order-2 group relative aspect-video md:aspect-[4/3]"> 
+                        <img src="images/bac-ho.jpeg" alt="Chủ tịch Hồ Chí Minh" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div> 
+                    </div>
+                    <div class="text-center md:text-left md:order-1">
+                        <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Di Sản Vĩ Đại</span>
+                        <h3 class="text-3xl lg:text-4xl text-primary font-extrabold mb-5 leading-tight">135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh</h3>
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Kỷ niệm 135 năm ngày sinh của Chủ tịch Hồ Chí Minh (19/5/1890 - 19/5/2025), vị lãnh tụ thiên tài, người thầy vĩ đại của cách mạng Việt Nam, Anh hùng giải phóng dân tộc, Danh nhân văn hóa thế giới.
+                        </p>
+                        <a href="bac-ho.html" class="inline-flex items-center justify-center font-semibold text-white bg-primary hover:bg-[#ba141a] transition-colors text-base group px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                            Khám Phá Di Sản
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section py-16 md:py-24 bg-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+            
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="inline-block text-gray-500 tracking-wider uppercase text-sm mb-2 fade-in-element">Chương trình đặc biệt</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4 fade-in-element">Sự Kiện Nổi Bật</h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto fade-in-element" style="transition-delay: 0.2s;">Đừng bỏ lỡ những hoạt động ý nghĩa trong chuỗi sự kiện kỷ niệm quan trọng của dân tộc</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 fade-in-element group event-card border border-gray-100">
+                        <div class="h-56 overflow-hidden">
+                            <img src="images/event1.jpg" alt="Lễ Diễu Binh" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z" />
+                                    </svg>
+                                </div>
+                                <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider">30/04/2025</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-[#ba141a] transition-colors">Lễ Diễu Binh, Diễu Hành Kỷ Niệm 50 Năm</h3>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Lễ diễu binh, diễu hành cấp quốc gia được tổ chức tại Quảng trường Ba Đình, Hà Nội và các địa phương trọng điểm trên cả nước.</p>
+                            
+                            <a href="hoat-dong.html#event-dieu-binh" class="inline-flex items-center font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group">
+                                Chi tiết 
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 fade-in-element group event-card border border-gray-100" style="transition-delay: 0.2s;">
+                        <div class="h-56 overflow-hidden">
+                            <img src="images/event2.webp" alt="Chương trình nghệ thuật" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z" />
+                                    </svg>
+                                </div>
+                                <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider">19/05/2025</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-[#ba141a] transition-colors">Chương Trình Nghệ Thuật Đặc Biệt</h3>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Chương trình nghệ thuật "Khát Vọng - Tỏa Sáng" kỷ niệm 135 năm ngày sinh Chủ tịch Hồ Chí Minh, tôn vinh di sản của Người.</p>
+                            
+                            <a href="hoat-dong.html#event-nghe-thuat-bac" class="inline-flex items-center font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group">
+                                Chi tiết 
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 fade-in-element group event-card border border-gray-100" style="transition-delay: 0.4s;">
+                        <div class="h-56 overflow-hidden">
+                            <img src="images/event3.png" alt="Hành Trình Theo Dấu Chân Bác" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z" />
+                                    </svg>
+                                </div>
+                                <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider">01-19/05/2025</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-[#ba141a] transition-colors">Hành Trình Theo Dấu Chân Bác</h3>
+                            <p class="text-gray-600 mb-5 text-sm leading-relaxed">Chuỗi hoạt động về nguồn, thăm các di tích lịch sử gắn liền với cuộc đời và sự nghiệp của Chủ tịch Hồ Chí Minh trên cả nước.</p>
+                            
+                            <a href="hoat-dong.html#event-hanh-trinh-bac" class="inline-flex items-center font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group">
+                                Khám phá
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax-section min-h-[40vh] md:min-h-[50vh] relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 z-0"></div>
+
+                <img src="images/bac-ho-thieu-nhi-quote-bg.png" alt="Bác Hồ với thiếu nhi" 
+                     class="parallax-bg absolute inset-0 w-full h-full object-cover brightness-50"
+                     data-parallax-speed="0.05" 
+                     loading="lazy">
+ 
+            
+            <div class="relative z-10 max-w-3xl mx-auto text-center text-white p-8 h-full flex flex-col justify-center items-center py-16">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-secondary mx-auto mb-6" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
+                </svg>
+                <blockquote class="text-2xl md:text-4xl italic font-light leading-relaxed mb-6 drop-shadow-lg">
+                    "Không có gì quý hơn độc lập, tự do."
+                </blockquote>
+                <cite class="block text-lg md:text-xl font-semibold drop-shadow-md">— Chủ tịch Hồ Chí Minh</cite>
+            </div>
+        </section>
+
+        <footer class="content-section bg-gray-900 text-white pt-16 pb-8">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+                    <div class="fade-in-element">
+                        <h2 class="text-2xl font-bold text-secondary mb-4">Dấu Ấn Lịch Sử</h2>
+                        <p class="text-gray-400 leading-relaxed">Trang web kỷ niệm 50 năm ngày giải phóng miền Nam, thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh.</p>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Liên Kết Nhanh</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Trang Chủ</a></li>
+                            <li><a href="giai-phong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">50 Năm Thống Nhất</a></li>
+                            <li><a href="bac-ho.html" class="text-gray-300 hover:text-white hover:underline transition-colors">135 Năm Ngày Sinh Bác</a></li>
+                            <li><a href="hoat-dong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Hoạt Động</a></li>
+                            <li><a href="thu-vien.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Thư Viện</a></li>
+                        </ul>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.4s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Thông Tin Liên Hệ</h3>
+                        <p class="text-gray-300 mb-2">Ban Tổ Chức Lễ Kỷ Niệm Quốc Gia</p>
+                        <p class="text-gray-300 mb-2"><span class="font-semibold">Email:</span> info@dauanlichsu.vn</p>
+                        <p class="text-gray-300"><span class="font-semibold">Điện thoại:</span> (024) 1234 5678</p>
+                    </div>
+                </div>
+                <div class="text-center pt-8 border-t border-gray-700 text-gray-500 text-sm fade-in-element" style="transition-delay: 0.6s;">
+                    <p>&copy; <span id="currentYear">2025</span> Ban Tổ Chức Lễ Kỷ Niệm. Phát triển bởi Nhóm Sinh Viên Yêu Nước.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Current Year for Footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Parallax Effect
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+            let tickingParallax = false;
+            
+            function updateParallax() {
+                parallaxBgs.forEach(bg => {
+                    if (bg.tagName.toLowerCase() === 'video') return;
+                    
+                    const section = bg.closest('.parallax-section');
+                    if (!section) return; 
+                    const rect = section.getBoundingClientRect();
+                    
+                    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                        const speed = parseFloat(bg.dataset.parallaxSpeed) || 0.05;
+                        const maxOffset = rect.height * 0.1; 
+                        let yPos = rect.top * speed; // Adjusted calculation
+                        yPos = Math.max(-maxOffset, Math.min(yPos, maxOffset));
+                        bg.style.transform = `translateZ(-0.5px) scale(1.3) translateY(${yPos}px)`;
+                    }
+                });
+                tickingParallax = false;
+            }
+            
+            function requestParallaxTick() {
+                if (!tickingParallax) {
+                    requestAnimationFrame(updateParallax);
+                    tickingParallax = true;
+                }
+            }
+
+            const parallaxWrapper = document.querySelector('.parallax-wrapper'); // Get the parallax wrapper
+
+            // Navbar Visibility & Mobile Menu
+            const header = document.querySelector('header.fixed');
+            // Ensure heroSection is queried within parallaxWrapper if it exists
+            const heroSection = parallaxWrapper ? parallaxWrapper.querySelector('section:first-child') : null;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mainNav = document.getElementById('main-nav');
+            let heroSectionHeight = 0;
+
+            if (heroSection) {
+                heroSectionHeight = heroSection.offsetHeight;
+            }
+
+            function handleNavbarState() {
+                if (!header || !parallaxWrapper) return; // Exit if header or parallaxWrapper is not found
+
+                let currentScrollY;
+                let effectiveHeroHeight = heroSectionHeight;
+                let effectiveHeaderHeight = header.offsetHeight;
+
+                if (!heroSection) { // Fallback if heroSection is not found
+                    currentScrollY = parallaxWrapper.scrollTop;
+                    if (currentScrollY > 50) {
+                        header.classList.remove('navbar-hidden');
+                        header.classList.add('navbar-visible');
+                    } else {
+                        header.classList.add('navbar-hidden');
+                        header.classList.remove('navbar-visible');
+                    }
+                    return;
+                }
+                
+                currentScrollY = parallaxWrapper.scrollTop; // Use scrollTop of the parallaxWrapper
+                const triggerPoint = effectiveHeroHeight - effectiveHeaderHeight;
+
+                if (currentScrollY > triggerPoint) { 
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                } else {
+                    header.classList.add('navbar-hidden');
+                    header.classList.remove('navbar-visible');
+                    // Ensure mobile menu is closed if header hides
+                    if (mainNav && !mainNav.classList.contains('hidden')) {
+                        mainNav.classList.add('hidden');
+                        if (mobileMenuButton) {
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }
+            }
+            
+            if (mobileMenuButton && mainNav) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mainNav.classList.toggle('hidden'); // toggle returns true if class was REMOVED (i.e. menu is now visible)
+                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded); // So, if hidden is false (visible), expanded is true
+                });
+            }
+
+            // Fade-in Elements on Scroll
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    if (hrefAttribute.length > 1) { 
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) { 
+                                mainNav.classList.add('hidden');
+                                if (mobileMenuButton) {
+                                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Scroll Event Listener
+            if (parallaxWrapper) {
+                parallaxWrapper.addEventListener('scroll', () => {
+                    if (parallaxBgs.length > 0) { 
+                        requestParallaxTick();
+                    }
+                    handleNavbarState(); // Call navbar state handler on scroll
+                }, { passive: true });
+                
+                // Initial check for navbar state after DOM is ready
+                handleNavbarState();
+            } else {
+                console.warn('.parallax-wrapper not found. Navbar visibility may not work as intended.');
+                // Fallback: if no parallax-wrapper, you might want to use window scroll
+                // For now, this example assumes parallax-wrapper is essential for the intended scroll behavior.
+            }
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Năm Giải Phóng Miền Nam, Thống Nhất Đất Nước | Dấu Ấn Lịch Sử</title>
+    <meta name="description" content="Kỷ niệm 50 năm ngày giải phóng miền Nam, thống nhất đất nước (30/4/1975 - 30/4/2025) - mốc son lịch sử vĩ đại của dân tộc.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#d91f26',
+              secondary: '#ffce00',
+              dark: '#333',
+            },
+            fontFamily: {
+              sans: ['Quicksand', 'Roboto', 'system-ui', 'sans-serif'],
+            },
+            scale: {
+              '102': '1.02',
+            },
+            transitionProperty: {
+              'height': 'height',
+              'spacing': 'margin, padding',
+            }
+          }
+        }
+      }
+    </script>
+    <link href="css/tailwind-components.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        .parallax-wrapper { height: 100vh; overflow-x: hidden; overflow-y: auto; perspective: 3px; will-change: scroll-position; -webkit-overflow-scrolling: touch; transform-style: preserve-3d; scroll-behavior: smooth; }
+        .parallax-section { position: relative; display: flex; justify-content: center; align-items: center; min-height: 50vh; width: 100%; transform-style: preserve-3d; z-index: 1; backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; height: auto; }
+        .parallax-section.h-screen { min-height: 100vh; }
+        .content-section { background-color: white; position: relative; z-index: 2; isolation: isolate; }
+        .fade-in-element { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
+        .fade-in-element.visible { opacity: 1; transform: translateY(0); }
+        video.parallax-bg { transform: none !important; width: 100%; height: 100%; object-fit: cover; object-position: center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; will-change: transform; }
+        .navbar-hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+        .navbar-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        header.fixed { transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #d91f26, #ba141a); border-radius: 10px; border: 2px solid #f1f1f1; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #ba141a, #a01218); box-shadow: 0 0 2px rgba(0,0,0,0.2); }
+        html { scrollbar-color: #d91f26 #f1f1f1; scrollbar-width: thin; }
+        .hero-gradient-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%); z-index: 0; }
+        .event-card { position: relative; isolation: isolate; transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); will-change: transform, box-shadow; }
+        .event-card::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(120deg, var(--primary-glow, rgba(217, 31, 38, 0.15)), var(--secondary-glow, rgba(255, 206, 0, 0.12))); opacity: 0; transition: opacity 0.4s ease; }
+        .event-card:hover::before { opacity: 1; }
+        .btn-enhanced { position: relative; overflow: hidden; transition: all 0.3s ease; z-index: 1; transform: translateZ(0); }
+        .btn-enhanced::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: rgba(255,255,255,0.1); transition: width 0.4s ease; z-index: -1; }
+        .btn-enhanced:hover::before { width: 100%; }
+        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-scale:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        @media (max-width: 768px) { .parallax-bg:not(video) { transform: translateZ(-0.5px) scale(1.25); } }
+        .parallax-section.min-h-\[40vh\], .parallax-section.min-h-\[50vh\] { overflow: hidden; }
+        .section-title-tw { /* A common title style if needed, or use Tailwind directly */
+            @apply text-3xl md:text-4xl font-bold text-primary text-center mb-12 lg:mb-16;
+        }
+
+        /* 3D Model Viewer Styles (from original giai-phong.html) */
+        #model-viewer-container {
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        #model-viewer-container:hover {
+            transform: translateY(-5px) scale(1.02); /* Added scale from original */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+        .model-info-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-gray-100 antialiased">
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 z-[100] navbar-hidden">
+        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center relative">
+            <a href="index.html" class="logo-link transition-opacity hover:opacity-90">
+                <h1 class="text-2xl text-primary font-bold m-0">Dấu Ấn Lịch Sử</h1>
+            </a>
+            <button class="md:hidden p-2 hover:text-primary transition-colors" id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <nav id="main-nav" class="hidden absolute top-full right-0 mt-2 w-full max-w-xs sm:max-w-sm bg-white shadow-xl rounded-lg p-4 z-50 md:static md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none md:p-0 md:mt-0 md:max-w-none">
+                <ul class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-5 list-none w-full md:w-auto md:ml-auto">
+                    <li><a href="index.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Trang Chủ</a></li>
+                    <li><a href="giai-phong.html" class="block text-primary font-medium py-2 px-2 relative active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-full after:h-0.5 after:bg-primary">50 Năm Thống Nhất</a></li>
+                    <li><a href="bac-ho.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">135 Năm Ngày Sinh Bác</a></li>
+                    <li><a href="hoat-dong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Hoạt Động</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="parallax-wrapper" style="padding-top: 0;">
+        <!-- Hero Parallax Section -->
+        <section class="parallax-section h-screen overflow-hidden"> 
+            <img src="images/giai-phong-banner.jpg" alt="Giải Phóng Miền Nam, Thống Nhất Đất Nước" class="absolute inset-0 w-full h-full object-cover z-[-1] pt-12">
+            
+           
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent z-[0]"></div> 
+            
+        </section>
+
+        <section class="content-section py-16 md:py-24 bg-gray-50">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <h2 class="section-title-tw fade-in-element">Ý Nghĩa Lịch Sử Vĩ Đại</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16 fade-in-element">
+                    <div class="rounded-lg overflow-hidden shadow-xl"><img src="images/giai-phong-1.jpg" alt="Chiến dịch Hồ Chí Minh lịch sử" class="w-full h-auto object-cover"></div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl text-primary font-bold mb-4">Chiến Dịch Hồ Chí Minh Lịch Sử</h3>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">Chiến dịch Hồ Chí Minh, đỉnh cao là sự kiện trưa ngày 30/4/1975 khi xe tăng của Quân Giải phóng tiến vào Dinh Độc Lập, đã kết thúc thắng lợi cuộc kháng chiến chống Mỹ, cứu nước. Đây là một trong những chiến công hiển hách nhất trong lịch sử đấu tranh giữ nước của dân tộc ta.</p>
+                        <p class="text-lg text-gray-700 leading-relaxed">Thắng lợi này đã chấm dứt hoàn toàn ách thống trị của chủ nghĩa thực dân mới, giải phóng hoàn toàn miền Nam, thống nhất đất nước, đưa Việt Nam bước vào kỷ nguyên mới: độc lập, tự do và chủ nghĩa xã hội.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-element">
+                    <div class="rounded-lg overflow-hidden shadow-xl md:order-2"><img src="images/giai-phong-2.webp" alt="Niềm vui thống nhất đất nước" class="w-full h-auto object-cover"></div>
+                    <div class="text-center md:text-left md:order-1">
+                        <h3 class="text-3xl text-primary font-bold mb-4">Tầm Vóc và Ý Nghĩa Quốc Tế</h3>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">Đại thắng mùa Xuân 1975 không chỉ là thắng lợi của dân tộc Việt Nam mà còn là thắng lợi của các lực lượng hòa bình, dân chủ và tiến bộ xã hội trên toàn thế giới. Nó cổ vũ mạnh mẽ phong trào giải phóng dân tộc, góp phần làm thay đổi cục diện thế giới.</p>
+                        <p class="text-lg text-gray-700 leading-relaxed">Thắng lợi này khẳng định đường lối cách mạng đúng đắn của Đảng Cộng sản Việt Nam, sức mạnh của khối đại đoàn kết toàn dân tộc và ý chí kiên cường, bất khuất của con người Việt Nam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section py-16 md:py-24 bg-gray-800 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-secondary/10 rounded-full blur-3xl opacity-50"></div>
+            
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4 relative z-10">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 fade-in-element drop-shadow-sm">Khám Phá Mô Hình 3D</h2>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto fade-in-element" style="transition-delay: 0.2s;">
+                        Tương tác với mô hình xe tăng Type 59 - một trong những phương tiện chiến đấu mang tính biểu tượng trong cuộc kháng chiến chống Mỹ và chiến dịch Hồ Chí Minh lịch sử.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+                    <div class="lg:col-span-2">
+                        <div id="model-viewer-container" class="fade-in-element aspect-video bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl shadow-2xl overflow-hidden border border-gray-700">
+                            <div class="sketchfab-embed-wrapper w-full h-full"> 
+                                <iframe title="type_59" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share class="w-full h-full" src="https://sketchfab.com/models/76f896deb6bf4dfda68d6a0c56a26133/embed?autospin=0&preload=1&ui_theme=dark&ui_infos=0&ui_controls=1&ui_annotations=0&camera=0"> </iframe> <!-- Autospin set to 0 for better initial view -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:pl-6 fade-in-element" style="transition-delay: 0.3s;">
+                        <div class="bg-gray-900/70 model-info-card p-6 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-bold text-secondary mb-4">Xe Tăng Type 59</h3>
+                            <p class="text-gray-300 mb-4">
+                                Xe tăng Type 59 là phiên bản sản xuất của Trung Quốc dựa trên T-54 của Liên Xô, được sử dụng rộng rãi trong Quân đội Nhân dân Việt Nam trong cuộc kháng chiến chống Mỹ.
+                            </p>
+                            <p class="text-gray-300 mb-4">
+                                Xe tăng 390 thuộc Lữ đoàn xe tăng 203 và xe tăng 843 thuộc Trung đoàn xe tăng 273 là hai trong những chiếc xe đầu tiên tiến vào Dinh Độc Lập ngày 30/4/1975, đánh dấu thắng lợi hoàn toàn của Chiến dịch Hồ Chí Minh.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mt-6 text-sm">
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Trọng lượng: 36 tấn</span>
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Tốc độ: 50 km/h</span>
+                                <span class="px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Pháo chính: 100mm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8 text-gray-400 text-sm fade-in-element" style="transition-delay: 0.4s;">
+                    Mô hình 3D được cung cấp bởi 
+                    <a href="https://sketchfab.com/FlashPoin" target="_blank" rel="nofollow noreferrer" class="font-medium text-secondary hover:text-yellow-300 transition-colors">FlashPoint</a> 
+                    trên 
+                    <a href="https://sketchfab.com" target="_blank" rel="nofollow noreferrer" class="font-medium text-blue-400 hover:text-blue-300 transition-colors">Sketchfab</a>.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section py-16 md:py-24 bg-white">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <h2 class="section-title-tw fade-in-element">Hoạt Động Kỷ Niệm 50 Năm</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 fade-in-element event-card">
+                        <div class="h-56 overflow-hidden"><img src="images/kn-event1.jpg" alt="Lễ kỷ niệm Trung Ương" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider mb-3">30/04/2025</span>
+                            <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-[#ba141a] transition-colors">Lễ Kỷ Niệm Cấp Quốc Gia</h3>
+                            <p class="text-gray-600 mb-4 text-sm leading-relaxed">Lễ mít tinh, diễu binh, diễu hành trọng thể tại Hà Nội và TP. Hồ Chí Minh, tái hiện khí thế hào hùng của Đại thắng mùa Xuân.</p>
+                            <a href="hoat-dong.html#event-dieu-binh" class="font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group inline-flex items-center">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 fade-in-element event-card" style="transition-delay: 0.2s;">
+                        <div class="h-56 overflow-hidden"><img src="images/kn-event2.png" alt="Hội thảo khoa học quốc tế" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider mb-3">04/2025</span>
+                            <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-[#ba141a] transition-colors">Hội Thảo Khoa Học Quốc Gia</h3>
+                            <p class="text-gray-600 mb-4 text-sm leading-relaxed">Đánh giá tầm vóc, ý nghĩa lịch sử của cuộc kháng chiến chống Mỹ cứu nước và Đại thắng mùa Xuân 1975.</p>
+                             <a href="hoat-dong.html#event-hoi-thao-gp" class="font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group inline-flex items-center">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 fade-in-element event-card" style="transition-delay: 0.4s;">
+                        <div class="h-56 overflow-hidden"><img src="images/kn-event3.jpg" alt="Triển lãm Con Đường Thống Nhất" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-secondary/80 text-dark text-xs font-semibold rounded-full uppercase tracking-wider mb-3">20/04 - 05/05/2025</span>
+                            <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-[#ba141a] transition-colors">Triển Lãm "Con Đường Thống Nhất"</h3>
+                            <p class="text-gray-600 mb-4 text-sm leading-relaxed">Trưng bày hình ảnh, hiện vật, tư liệu quý về cuộc đấu tranh giải phóng dân tộc, thống nhất đất nước tại các bảo tàng lớn.</p>
+                            <a href="hoat-dong.html#event-trien-lam-gp" class="font-semibold text-primary hover:text-[#ba141a] transition-colors text-sm group inline-flex items-center">Xem chi tiết <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax-section min-h-[45vh] md:min-h-[55vh] relative overflow-hidden"> 
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 z-0"></div>
+
+            <img src="images/giai-phong-quote-bg.jpg" alt="Đất nước thống nhất" 
+                 class="parallax-bg absolute inset-0 w-full h-full object-cover opacity-30" 
+                 data-parallax-speed="0.05" 
+                 loading="lazy">
+ 
+            
+            <div class="relative z-10 w-full max-w-4xl mx-auto text-center text-white p-8 sm:p-12 md:p-16 fade-in-element h-full flex flex-col justify-center items-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 md:h-20 md:w-20 text-secondary mx-auto mb-6 opacity-90" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/></svg>
+                <blockquote class="text-2xl md:text-3xl lg:text-4xl italic font-light leading-relaxed md:leading-loose mb-8 text-gray-100 drop-shadow-lg">
+                    "Năm tháng sẽ qua đi, nhưng thắng lợi của nhân dân ta trong sự nghiệp chống Mỹ, cứu nước mãi mãi được ghi vào lịch sử dân tộc ta như một trong những trang chói lọi nhất..."
+                </blockquote>
+                <cite class="block text-base md:text-lg font-medium text-gray-300 drop-shadow-md">— Trích Lời Điếu văn của Ban Chấp hành Trung ương Đảng Lao động Việt Nam (9/1969)</cite>
+            </div>
+        </section>
+
+        <footer class="content-section bg-gray-900 text-white pt-16 pb-8">
+            <div class="w-[90%] max-w-[1200px] mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+                    <div class="fade-in-element">
+                        <h2 class="text-2xl font-bold text-secondary mb-4">Dấu Ấn Lịch Sử</h2>
+                        <p class="text-gray-400 leading-relaxed">Trang web kỷ niệm 50 năm ngày giải phóng miền Nam, thống nhất đất nước và 135 năm ngày sinh Chủ tịch Hồ Chí Minh.</p>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Liên Kết Nhanh</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Trang Chủ</a></li>
+                            <li><a href="giai-phong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">50 Năm Thống Nhất</a></li>
+                            <li><a href="bac-ho.html" class="text-gray-300 hover:text-white hover:underline transition-colors">135 Năm Ngày Sinh Bác</a></li>
+                            <li><a href="hoat-dong.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Hoạt Động</a></li>
+                            <li><a href="thu-vien.html" class="text-gray-300 hover:text-white hover:underline transition-colors">Thư Viện</a></li>
+                        </ul>
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.4s;">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">Thông Tin Liên Hệ</h3>
+                        <p class="text-gray-300 mb-2">Ban Tổ Chức Lễ Kỷ Niệm Quốc Gia</p>
+                        <p class="text-gray-300 mb-2"><span class="font-semibold">Email:</span> info@dauanlichsu.vn</p>
+                        <p class="text-gray-300"><span class="font-semibold">Điện thoại:</span> (024) 1234 5678</p>
+                    </div>
+                </div>
+                <div class="text-center pt-8 border-t border-gray-700 text-gray-500 text-sm fade-in-element" style="transition-delay: 0.6s;">
+                    <p>&copy; <span id="currentYear">2025</span> Ban Tổ Chức Lễ Kỷ Niệm. Phát triển bởi Nhóm Sinh Viên Yêu Nước.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+   <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Current Year for Footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Parallax Effect
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+            let tickingParallax = false;
+            
+            function updateParallax() {
+                parallaxBgs.forEach(bg => {
+                    if (bg.tagName.toLowerCase() === 'video') return;
+                    
+                    const section = bg.closest('.parallax-section');
+                    if (!section) return; 
+                    const rect = section.getBoundingClientRect();
+                    
+                    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                        const speed = parseFloat(bg.dataset.parallaxSpeed) || 0.05;
+                        const maxOffset = rect.height * 0.1; 
+                        let yPos = rect.top * speed; 
+                        yPos = Math.max(-maxOffset, Math.min(yPos, maxOffset));
+                        bg.style.transform = `translateZ(-0.5px) scale(1.3) translateY(${yPos}px)`;
+                    }
+                });
+                tickingParallax = false;
+            }
+            
+            function requestParallaxTick() {
+                if (!tickingParallax) {
+                    requestAnimationFrame(updateParallax);
+                    tickingParallax = true;
+                }
+            }
+
+            const parallaxWrapper = document.querySelector('.parallax-wrapper'); 
+
+            // Navbar Visibility & Mobile Menu
+            const header = document.querySelector('header.fixed');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mainNav = document.getElementById('main-nav');
+            
+            let lastScrollY = 0;
+            const navbarScrollThreshold = 10; // Show navbar if scrolled less than this from top
+
+            if (parallaxWrapper) {
+                lastScrollY = parallaxWrapper.scrollTop;
+            } else if (typeof window !== 'undefined') {
+                lastScrollY = window.scrollY;
+            }
+
+            if (header) {
+                const initialScroll = parallaxWrapper ? parallaxWrapper.scrollTop : (typeof window !== 'undefined' ? window.scrollY : 0);
+                if (initialScroll <= navbarScrollThreshold) {
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                }
+            }
+            
+            function handleNavbarState() {
+                if (!header) return;
+
+                let currentScrollY = 0;
+                if (parallaxWrapper) {
+                    currentScrollY = parallaxWrapper.scrollTop;
+                } else if (typeof window !== 'undefined') {
+                    currentScrollY = window.scrollY;
+                }
+                
+                const headerHeight = header.offsetHeight;
+
+                if (currentScrollY > lastScrollY && currentScrollY > headerHeight) {
+                    header.classList.add('navbar-hidden');
+                    header.classList.remove('navbar-visible');
+                    if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) {
+                        mainNav.classList.add('hidden');
+                        if (mobileMenuButton) {
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                } else if (currentScrollY < lastScrollY || currentScrollY <= navbarScrollThreshold) {
+                    header.classList.remove('navbar-hidden');
+                    header.classList.add('navbar-visible');
+                }
+                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+            }
+            
+            if (mobileMenuButton && mainNav) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mainNav.classList.toggle('hidden'); 
+                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded); 
+                });
+            }
+
+            // Fade-in Elements on Scroll
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    if (hrefAttribute.length > 1) { 
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) { 
+                                mainNav.classList.add('hidden');
+                                if (mobileMenuButton) {
+                                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            if (parallaxWrapper) {
+                parallaxWrapper.addEventListener('scroll', () => {
+                    if (parallaxBgs.length > 0) { 
+                        requestParallaxTick();
+                    }
+                    handleNavbarState(); 
+                }, { passive: true });
+            } else if (typeof window !== 'undefined') {
+                window.addEventListener('scroll', handleNavbarState, { passive: true });
+                console.warn('.parallax-wrapper not found. Using window scroll for navbar.');
+            } else {
+                console.warn('.parallax-wrapper not found and window object not available. Navbar scroll behavior might not work.');
+            }
+
+            // 3D Model Viewer Interaction (specific to giai-phong.html)
+            const modelContainer = document.getElementById('model-viewer-container');
+            if (modelContainer) {
+                const iframe = modelContainer.querySelector('iframe');
+                if (iframe) {
+                    const loadingDiv = document.createElement('div');
+                    loadingDiv.className = 'absolute inset-0 flex items-center justify-center bg-gray-800/90 z-20 transition-opacity duration-500';
+                    loadingDiv.innerHTML = `
+                        <div class="text-center">
+                            <div class="inline-block w-12 h-12 border-4 border-secondary border-t-transparent rounded-full animate-spin mb-4"></div>
+                            <p class="text-secondary text-sm">Đang tải mô hình 3D...</p>
+                        </div>
+                    `;
+                    modelContainer.appendChild(loadingDiv);
+
+                    iframe.addEventListener('load', () => {
+                        loadingDiv.classList.add('opacity-0');
+                        setTimeout(() => loadingDiv.remove(), 500); // Remove after fade out
+                    });
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>
