@@ -54,37 +54,45 @@
 
         .hero-gradient-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%); /* Darker overlay for better text contrast */
+            top: 10; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%); /* Giảm độ tối của overlay */
             z-index: 0;
         }
         .parallax-section.min-h-\[40vh\], .parallax-section.min-h-\[50vh\] { overflow: hidden; }
     </style>
 </head>
-<body class="font-sans text-dark bg-gray-100">
+<body class="font-sans text-dark bg-gray-100"> <!-- Removed antialiased if not globally intended -->
     <!-- Fixed Header -->
     <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md py-4 z-[100] navbar-hidden">
-        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="logo-link">
+        <div class="w-[90%] max-w-[1200px] mx-auto px-4 flex justify-between items-center relative">
+            <a href="index.html" class="logo-link transition-opacity hover:opacity-90">
                 <h1 class="text-2xl text-primary font-bold m-0">Dấu Ấn Lịch Sử</h1>
             </a>
-            <nav id="main-nav" class="hidden md:flex md:items-center">
-                <ul class="flex flex-col md:flex-row list-none md:ml-auto">
-                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="index.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Trang Chủ</a></li>
-                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="giai-phong.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">50 Năm Thống Nhất</a></li>
-                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="bac-ho.html" class="text-primary font-medium py-2.5 px-1.5 relative active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary">135 Năm Ngày Sinh Bác</a></li>
-                    <li class="ml-0 md:ml-5 mt-2 md:mt-0"><a href="hoat-dong.html" class="text-dark font-medium py-2.5 px-1.5 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Hoạt Động</a></li>
+            <button class="md:hidden p-2 hover:text-primary transition-colors" id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <nav id="main-nav" class="hidden absolute top-full right-0 mt-2 w-full max-w-xs sm:max-w-sm bg-white shadow-xl rounded-lg p-4 z-50 md:static md:flex md:items-center md:w-auto md:bg-transparent md:shadow-none md:p-0 md:mt-0 md:max-w-none">
+                <ul class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-5 list-none w-full md:w-auto md:ml-auto">
+                    <li><a href="index.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Trang Chủ</a></li>
+                    <li><a href="giai-phong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">50 Năm Thống Nhất</a></li>
+                    <li><a href="bac-ho.html" class="block text-primary font-medium py-2 px-2 relative active:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-full after:h-0.5 after:bg-primary">135 Năm Ngày Sinh Bác</a></li>
+                    <li><a href="hoat-dong.html" class="block text-dark font-medium py-2 px-2 relative hover:text-primary after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Hoạt Động</a></li>
                 </ul>
             </nav>
-            <button class="md:hidden p-2" id="mobile-menu-button" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-            </button>
         </div>
     </header>
+
+
     <div class="parallax-wrapper pt-[12px]"> 
         <!-- Hero Parallax Section -->
-        <section class="relative h-screen flex justify-center items-center text-center overflow-hidden">
-            <img src="images/bac-ho-banner2.png" alt="135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh" class="absolute inset-0 w-full h-full object-cover z-[-1]">
+       <section class="relative min-h-[70vh] md:min-h-screen flex justify-center items-center text-center overflow-hidden">
+            <!-- <img src="images/bac-ho-banner2.png" alt="135 Năm Ngày Sinh Chủ Tịch Hồ Chí Minh" class="absolute inset-0 w-full h-full object-cover z-[-1]"> -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-[-1]" aria-label="Video nền kỷ niệm 135 năm ngày sinh Chủ tịch Hồ Chí Minh">
+                <source src="videos/bac-ho-video-banner.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
             <div class="hero-gradient-overlay"></div>
             <div class="relative z-10 text-white p-8 max-w-4xl mx-auto"> 
                 <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight drop-shadow-lg fade-in-element">
@@ -207,96 +215,6 @@
         </footer>
     </div>
 
-    <script src="js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Current Year for Footer
-            const currentYearSpan = document.getElementById('currentYear');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Navbar Visibility & Mobile Menu (like giai-phong.html)
-            const header = document.querySelector('header.fixed');
-            const parallaxWrapper = document.querySelector('.parallax-wrapper');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mainNav = document.getElementById('main-nav');
-            
-            let lastScrollY = 0;
-            const navbarScrollThreshold = 10; // Show navbar if scrolled less than this from top
-
-            if (parallaxWrapper) {
-                lastScrollY = parallaxWrapper.scrollTop;
-            } else if (typeof window !== 'undefined') {
-                lastScrollY = window.scrollY;
-                console.warn('.parallax-wrapper not found for scroll calculations. Using window.scrollY.');
-            }
-
-            function initializeNavbarState() {
-                if (!header) return;
-                let currentInitialScroll = 0;
-                if (parallaxWrapper) {
-                    currentInitialScroll = parallaxWrapper.scrollTop;
-                } else if (typeof window !== 'undefined') {
-                    currentInitialScroll = window.scrollY;
-                }
-
-                if (currentInitialScroll <= navbarScrollThreshold) {
-                    header.classList.remove('navbar-hidden');
-                    header.classList.add('navbar-visible');
-                } else {
-                    // Ensures it respects the navbar-hidden class if not at the very top
-                    if (!header.classList.contains('navbar-hidden')) {
-                         header.classList.add('navbar-hidden');
-                         header.classList.remove('navbar-visible');
-                    }
-                }
-            }
-            
-            function handleNavbarState() {
-                if (!header) return;
-
-                let currentScrollY = 0;
-                if (parallaxWrapper) {
-                    currentScrollY = parallaxWrapper.scrollTop;
-                } else if (typeof window !== 'undefined') {
-                    currentScrollY = window.scrollY;
-                }
-                
-                const headerHeight = header.offsetHeight;
-
-                if (currentScrollY > lastScrollY && currentScrollY > headerHeight) { // Scrolling down
-                    header.classList.add('navbar-hidden');
-                    header.classList.remove('navbar-visible');
-                    if (mainNav && !mainNav.classList.contains('hidden') && window.innerWidth < 768) {
-                        mainNav.classList.add('hidden');
-                        if (mobileMenuButton) {
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                } else if (currentScrollY < lastScrollY || currentScrollY <= navbarScrollThreshold) { // Scrolling up or near top
-                    header.classList.remove('navbar-hidden');
-                    header.classList.add('navbar-visible');
-                }
-                lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
-            }
-            
-            if (mobileMenuButton && mainNav) {
-                mobileMenuButton.addEventListener('click', () => {
-                    const isExpanded = mainNav.classList.toggle('hidden'); 
-                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded)); 
-                });
-            }
-
-            if (parallaxWrapper) {
-                parallaxWrapper.addEventListener('scroll', handleNavbarState, { passive: true });
-            } else if (typeof window !== 'undefined') {
-                window.addEventListener('scroll', handleNavbarState, { passive: true });
-                console.warn('.parallax-wrapper not found for scroll events. Using window scroll for navbar.');
-            }
-            
-            initializeNavbarState(); // Set initial state
-        });
-    </script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
